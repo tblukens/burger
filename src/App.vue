@@ -1,29 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <section class="hero is-small is-warning is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-size-1">
+            Eat Da Burger!
+          </h1>
+          <img src="./assets/logo.png" alt="BOIGAHS" class="boigahs">
+        </div>
+      </div>
+    </section>
+    <div class="box cta has-text-centered has-background-white-ter">
+    <router-view />
     </div>
-    <router-view/>
   </div>
 </template>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.boigahs {
+  max-width: 400px;
 }
 </style>
