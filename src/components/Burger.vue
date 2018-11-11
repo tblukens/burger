@@ -1,8 +1,8 @@
 <template>
   <div class="burger text-is-centered">
     <div class="columns is-centered">
-      <div class="box column is-5 is-mobile checkMargin">
-        <div class="box has-background-danger has-text-white is-size-4">PREPARED</div>
+      <div class="box column is-5 is-mobile checkMargin has-background-danger">
+        <div class="box lettuceBack has-text-black-ter is-size-4">PREPARED</div>
         <div class="column is-centered">
           <div class="box has-background-warning" v-for="burger in burgers" :key="'li'+burger.id" :data-id="burger.id">
             <div class="columns burgers">
@@ -21,8 +21,8 @@
           </div>
         </div>
       </div>
-      <div class="box column is-5 is-offset-1 is-mobile">
-        <div class="box is-centered has-background-danger has-text-white is-size-4">DEVOURED</div>
+      <div class="box column is-5 is-offset-1 is-mobile has-background-danger">
+        <div class="box is-centered lettuceBack has-text-black-ter is-size-4">DEVOURED</div>
         <div class="column">
           <div class="box has-background-warning" v-for="eaten in devoured" :key="'devoured-'+eaten.id">
             <div class="columns burgers">
@@ -34,8 +34,8 @@
         </div>
       </div>
     </div>
-    <div class="box addBurger column is-centered is-6 is-offset-3 has-background-danger has-text-white">
-      <div class="box has-background-warning"><p class="is-size-4">Create a new burger!</p></div>
+    <div class="box addBurger column is-centered is-6 is-offset-3 has-background-danger">
+      <div class="box lettuceBack"><p class="is-size-4 has-text-black-ter">Create a new burger!</p></div>
       <div class="field is-grouped">
         <p class="control is-expanded">
           <input class="input" type="text" name="newburger" v-model="newBurger" placeholder="e.g Blue Cheese Bacon Burger">
@@ -137,5 +137,8 @@ export default {
 }
 .addBurger {
   margin: 30px 0;
+}
+.lettuceBack {
+  background: #84d644;
 }
 </style>

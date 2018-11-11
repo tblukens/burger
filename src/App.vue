@@ -10,7 +10,7 @@
         </div>
       </div>
     </section>
-    <div class="box cta has-text-centered has-background-grey-lighter">
+    <div class="box cta has-text-centered bun-back">
     <router-view />
     </div>
   </div>
@@ -26,5 +26,8 @@
 }
 .boigahs {
   max-width: 400px;
+}
+.bun-back {
+  background: #a77a33;
 }
 </style>
