@@ -1,29 +1,22 @@
-# burger
+# Eat Da Burger!
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![Eat Da Burger](readme.png)
+___
+### Simple app using express to run an api that talks to MySQL database. Vue is used as the front end then Axios is used to get, post, and put to the API.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### User can click the devour button to "eat" a burger from the prepared list. Burgers are then placed in the devoured section once eaten. If no burgers are available then the user can create a new burger.
 
-### Run your tests
+##### Go to http://tbl-burger.herokuapp.com/ to try it out.
+___
+### Tech used:
 ```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+JavaScript
+Node
+NPM
+Express
+Vue
+Axios
+MySQL
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
