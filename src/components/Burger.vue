@@ -10,7 +10,7 @@
                 <p class="is-size-5">{{ burger.burger_name}}</p>
               </div>
               <div class="column is-mobile has-text-right">
-                <router-link to="/"><button class="button is-danger is-rounded" :data-id="burger.id" data-devoured="false" @click="thisID">
+                <router-link to="/"><button class="button is-danger is-rounded" :data-id="burger.id" data-devoured="false" @click.prevent="thisID">
                     <span class="icon is-small">
                       <i class="fas fa-utensils"></i>
                     </span>
