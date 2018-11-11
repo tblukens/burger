@@ -16,8 +16,8 @@ app.use(express.static("dist"));
 
 // USING CORS FOR TESTING
 //==============================================================
-const cors = require('cors')
-app.use(cors())
+// const cors = require('cors')
+// app.use(cors())
 
 //--------------------------------------------------------------
 
