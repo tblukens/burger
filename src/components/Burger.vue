@@ -109,7 +109,7 @@ export default {
     }
   },
   mounted() {
-    let apiCall = `http://localhost:8081/api/burgers/all`
+    let apiCall = `/api/burgers/all`
     axios.get(apiCall)
       .then(res => {
         res.data.forEach(element => {
