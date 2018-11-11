@@ -10,7 +10,7 @@
         </div>
       </div>
     </section>
-    <div class="box cta has-text-centered has-background-white-ter">
+    <div class="box cta has-text-centered has-background-grey-lighter">
     <router-view />
     </div>
   </div>

@@ -1,24 +1,50 @@
 <template>
-  <div class="burger">
+  <div class="burger text-is-centered">
     <div class="columns is-centered">
-      <div class="column is-two-fifths is-mobile">
-        <div class="column has-text-left">
-          <div class="" v-for="burger in burgers" :key="'li'+burger.id" :data-id="burger.id">
-            <div class="columns burgers has-background-warning">
-              <div class="column is-half is-mobile">
-                <p>{{ burger.burger_name}}</p>
+      <div class="box column is-5 is-mobile checkMargin">
+        <div class="box has-background-danger has-text-white is-size-4">PREPARED</div>
+        <div class="column is-centered">
+          <div class="box has-background-warning" v-for="burger in burgers" :key="'li'+burger.id" :data-id="burger.id">
+            <div class="columns burgers">
+              <div class="column has-text-left is-three-fifths is-mobile">
+                <p class="is-size-5">{{ burger.burger_name}}</p>
               </div>
-              <div class="column is-half is-mobile">
-                <router-link to="/"><button :data-id="burger.id" data-devoured="false" @click="thisID">DEVOUR</button></router-link>
+              <div class="column is-mobile has-text-right">
+                <router-link to="/"><button class="button is-danger is-rounded" :data-id="burger.id" data-devoured="false" @click="thisID">
+                    <span class="icon is-small">
+                      <i class="fas fa-utensils"></i>
+                    </span>
+                    <span>DEVOUR</span>
+                  </button></router-link>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-two-fifths is-offset-one-fifth is-mobile">
-        <div class="burgers has-background-warning" v-for="eaten in devoured" :key="'li'+eaten.id" :data-id="eaten.id" @click="thisID">
-          {{ eaten.burger_name}}
+      <div class="box column is-5 is-offset-1 is-mobile">
+        <div class="box is-centered has-background-danger has-text-white is-size-4">DEVOURED</div>
+        <div class="column">
+          <div class="box has-background-warning" v-for="eaten in devoured" :key="'devoured-'+eaten.id">
+            <div class="columns burgers">
+              <div class="column is-mobile">
+                <p class="is-size-5">{{ eaten.burger_name}}</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="box addBurger column is-centered is-6 is-offset-3 has-background-danger has-text-white">
+      <div class="box has-background-warning"><p class="is-size-4">Create a new burger!</p></div>
+      <div class="field is-grouped">
+        <p class="control is-expanded">
+          <input class="input" type="text" name="newburger" v-model="newBurger" placeholder="e.g Blue Cheese Bacon Burger">
+        </p>
+        <p class="control">
+          <a class="button is-inverted is-rounded is-warning" @click.prevent="addNewBurger">
+            Add burger!
+          </a>
+        </p>
       </div>
     </div>
   </div>
@@ -32,7 +58,8 @@ export default {
   data: () => {
     return {
       burgers: [],
-      devoured: []
+      devoured: [],
+      newBurger: null
     }
   },
   methods: {
@@ -41,7 +68,7 @@ export default {
       console.log(e.currentTarget.getAttribute('data-id'))
       let id = e.currentTarget.getAttribute('data-id');
       let notDevoured = e.currentTarget.getAttribute('data-devoured');
-      let apiCall = `http://localhost:8081/api/burgers/${id}`
+      let apiCall = `/api/burgers/${id}`
       axios.put(apiCall, {
         data: {
           devoured: notDevoured
@@ -50,8 +77,20 @@ export default {
         this.recallAll()
       })
     },
+    addNewBurger: function () {
+      let apiCall = `/api/burgers/new`
+      console.log(this.newBurger)
+      axios.post(apiCall, {
+        data: {
+          burger_name: this.newBurger
+        }
+        }).then(() => {
+          this.recallAll()
+        })
+      this.newBurger = null
+    },
     recallAll: function () {
-      let apiCall = `http://localhost:8081/api/all`
+      let apiCall = `/api/burgers/all`
       this.burgers = []
       this.devoured = []
       axios.get(apiCall)
@@ -70,7 +109,7 @@ export default {
     }
   },
   mounted() {
-    let apiCall = `http://localhost:8081/api/all`
+    let apiCall = `http://localhost:8081/api/burgers/all`
     axios.get(apiCall)
       .then(res => {
         res.data.forEach(element => {
@@ -89,7 +128,14 @@ export default {
 </script>
 
 <style>
-.burgers {
-  margin: 10px auto;
+.burgers div {
+  margin: 6px 0px;
+  padding: 0px 10px;
+}
+.burger .checkMargin {
+  margin-bottom: 0px;
+}
+.addBurger {
+  margin: 30px 0;
 }
 </style>

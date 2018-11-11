@@ -5,15 +5,15 @@ const router = express.Router();
 const burger = require("../models/burger.js")
 
 
-router.get("/api/all", (req, res) => {
+router.get("/api/burgers/all", (req, res) => {
     burger.selectAll(data => {
         res.json(data)
     })
 })
 
-router.post("/api/burgers", (req, res) => {
-    console.log(req.body.burger_name)
-    let newBurger = req.body.burger_name;
+router.post("/api/burgers/new", (req, res) => {
+    console.log(req.body.data.burger_name)
+    let newBurger = req.body.data.burger_name;
     burger.insertOne(newBurger, result => {
         res.json({ id: result.insertId })
     })
